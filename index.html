@@ -1,0 +1,856 @@
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> My Portfolio - Developer CV</title>
+    
+    <!-- Tailwind CSS (CDN for development only) -->
+    <script>
+        // Suppress Tailwind CDN warning
+        if (typeof console !== 'undefined' && console.warn) {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('tailwindcss.com')) {
+                    return; // Suppress Tailwind CDN warning
+                }
+                originalWarn.apply(console, args);
+            };
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-main" data-theme="dark" data-lang="en" data-dir="ltr">
+    
+    <!-- Loading Screen -->
+    <div class="loader-screen" id="loader">
+        <div class="loader-content">
+            <div class="loader-code-text">
+                <div class="code-line" data-line="1">Umaima Malik  portfolio = {</div>
+                <div class="code-line" data-line="2">  loading: true,</div>
+                <div class="code-line" data-line="3">  status: 'initializing...'</div>
+                <div class="code-line" data-line="4">};</div>
+            </div>
+            <div class="loader-spinner-wrapper">
+                <div class="loader-spinner"></div>
+            </div>
+            <div class="loader-progress-wrapper">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div class="loader-percentage" id="loaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text"> UM Dev</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text" data-text-en="Home" data-text-ar="الرئيسية">Home</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text" data-text-en="About" data-text-ar="عني">About</span>
+                </a>
+                <a href="#skills" class="nav-link" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span class="nav-text" data-text-en="Skills" data-text-ar="المهارات">Skills</span>
+                </a>
+                <a href="#experience" class="nav-link" data-section="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="nav-text" data-text-en="Experience" data-text-ar="الخبرة">Experience</span>
+                </a>
+                <a href="#projects" class="nav-link" data-section="projects">
+                    <i class="fas fa-rocket"></i>
+                    <span class="nav-text" data-text-en="Projects" data-text-ar="المشاريع">Projects</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span class="nav-text" data-text-en="Contact" data-text-ar="التواصل">Contact</span>
+                </a>
+            </div>
+            
+            <div class="nav-controls">
+                <button class="lang-toggle" id="langToggle" title="Toggle Language">
+                    <i class="fas fa-language"></i>
+                    <span class="lang-text">AR</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" title="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="code-grid-bg"></div>
+                <div class="floating-particles" id="particles"></div>
+            </div>
+            
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-greeting">
+                        <span class="greeting-text" data-text-en="Hello, I'm" data-text-ar="مرحباً، أنا">Hello, I'm</span>
+                        <span class="greeting-cursor">|</span>
+                    </div>
+                    
+                    <h1 class="hero-name" id="heroName">
+                        <span class="name-prefix">Umaima Malik </span>
+                        <span class="name-operator">=</span>
+                        <span class="name-value">Developer</span>
+                        <span class="name-suffix">;</span>
+                    </h1>
+                    
+                    <div class="hero-title">
+                        <span class="title-prefix">//</span>
+                        <span class="title-text" data-text-en="Full Stack Developer & UI/UX Designer" data-text-ar="مطور Full Stack & مصمم UI/UX"> Frontend Developer & UI/UX Designer</span>
+                    </div>
+                    
+                    <p class="hero-description" data-text-en="Passionate developer creating exceptional digital experiences with modern technologies." data-text-ar="مطور شغوف بإنشاء تجارب رقمية استثنائية باستخدام التقنيات الحديثة.">
+                        Passionate developer creating exceptional digital experiences with modern technologies.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <span data-text-en="Get In Touch" data-text-ar="تواصل معي">Get In Touch</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span data-text-en="View Projects" data-text-ar="عرض المشاريع">View Projects</span>
+                            <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-social">
+
+                        <a href="https://github.com/umaima229" 
+                           class="social-icon" 
+                           title="GitHub" 
+                           target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    
+                        <a href="https://www.linkedin.com/in/umaima-malik-a2b957333/" 
+                           class="social-icon" 
+                           title="LinkedIn" 
+                           target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    
+                        <a href="https://x.com/UmaimaMalik70" 
+                           class="social-icon" 
+                           title="Twitter" 
+                           target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    
+                        <a href="https://mail.google.com/mail/u/0/?fs=1&to=umaimam309@gmail.com&tf=cm" 
+                           class="social-icon" 
+                           title="Email" 
+                           target="_blank">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    
+                    </div> 
+                </div>
+                
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <div class="profile-image-glow"></div>
+                        <div class="profile-image-frame">
+                            <div class="profile-image" id="profileImage">
+                                <div class="profile-placeholder">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-1">
+                            <i class="fab fa-react"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">HTML & CSS</span>
+                                <span class="badge-libs">  Modren Animaton,   Flexbox, </span>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i class="fab fa-node-js"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">Bootstrap </span>
+                                <span class="badge-libs">Modern UI, Components, Tailwind</span>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i class="fab fa-js"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">JavaScript</span>
+                                <span class="badge-libs">ES6+,DOM Manipulation  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text" data-text-en="Scroll Down" data-text-ar="انتقل للأسفل">Scroll Down</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">
+                        <span class="title-bracket">&lt;</span>
+                        <span class="title-text" data-text-en="About Me" data-text-ar="عني">About Me</span>
+                        <span class="title-bracket">/&gt;</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text-wrapper">
+                        <div class="about-intro">
+                            <p class="about-text" data-text-en="I'm a passionate Full Stack Developer with over 5 years of experience in building modern web applications and mobile solutions. I specialize in JavaScript technologies, React, Node.js, and creating beautiful user interfaces." data-text-ar="أنا مطور Full Stack شغوف مع أكثر من 3 سنوات من الخبرة في بناء تطبيقات الويب الحديثة والحلول الجوالة. أتخصص في تقنيات JavaScript، React، Node.js، وإنشاء واجهات مستخدم جميلة.">
+                                I'm a passionate Frontend Developer with over 3 years of experience in building modern web applications and mobile solutions. I specialize in JavaScript technologies, ES6, Responsive Design, and creating beautiful user interfaces.
+                            </p>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="50">0</div>
+                                <div class="stat-label" data-text-en="Frontend Projects" data-text-ar="مشروع"> Frontend Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="3">0</div>
+                                <div class="stat-label" data-text-en="Years Experience" data-text-ar="سنوات خبرة">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="6+">0</div>
+                                <div class="stat-label" data-text-en="Skills Learned" data-text-ar="عميل سعيد">Skills Learned</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image-wrapper">
+                        <div class="about-image-container">
+                            <div class="code-block">
+                                <div class="code-line">
+                                    <span class="code-keyword">const</span>
+                                    <span class="code-variable">developer</span>
+                                    <span class="code-operator">=</span>
+                                    <span class="code-brace">{</span>
+                                </div>
+                                <div class="code-line indent">
+                                    <span class="code-property">name</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-string">'Umaima Malik'</span>
+                                    <span class="code-comma">,</span>
+                                </div>
+                                <div class="code-line indent">
+                                    <span class="code-property">skills</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-bracket">[</span>
+                                    <span class="code-string">'HTML & CSS'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'Bootstrap &tailwind css'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'JavaScript + ES6'</span>
+                                    <span class="code-bracket">]</span>
+                                    <span class="code-comma">,</span>
+                                </div>
+                                <div class="code-line indent">
+                                    <span class="code-property">passion</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-string">'Coding'</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-brace">}</span>
+                                    <span class="code-semicolon">;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">
+                        <span class="title-bracket">&lt;</span>
+                        <span class="title-text" data-text-en="Skills" data-text-ar="المهارات">Skills</span>
+                        <span class="title-bracket">/&gt;</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title" data-text-en="Frontend" data-text-ar="الواجهة الأمامية">Frontend</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-skill="Html & CSS " data-percent="95">
+                                <div class="skill-header">
+                                    <span class="skill-name">Html & CSS</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="JavaScript" data-percent="95">
+                                <div class="skill-header">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="Bootstrap" data-percent="90">
+                                <div class="skill-header">
+                                    <span class="skill-name">Bootstrap</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="Tailwind" data-percent="88">
+                                <div class="skill-header">
+                                    <span class="skill-name">Tailwind</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title" data-text-en="Backend" data-text-ar="الخلفية">Backend</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-skill="Node.js" data-percent="50">
+                                <div class="skill-header">
+                                    <span class="skill-name">Node.js</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="Express" data-percent="50">
+                                <div class="skill-header">
+                                    <span class="skill-name">Express</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="MongoDB" data-percent="55">
+                                <div class="skill-header">
+                                    <span class="skill-name">MongoDB</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="PostgreSQL" data-percent="50">
+                                <div class="skill-header">
+                                    <span class="skill-name">PostgreSQL</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title" data-text-en="Tools & Others" data-text-ar="الأدوات وغيرها">Tools & Others</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-skill="Git" data-percent="95">
+                                <div class="skill-header">
+                                    <span class="skill-name">Git</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="Docker" data-percent="50">
+                                <div class="skill-header">
+                                    <span class="skill-name">Docker</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="AWS" data-percent="50">
+                                <div class="skill-header">
+                                    <span class="skill-name">AWS</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-skill="Figma" data-percent="95">
+                                <div class="skill-header">
+                                    <span class="skill-name">Figma</span>
+                                    <span class="skill-percent">0%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">
+                        <span class="title-bracket">&lt;</span>
+                        <span class="title-text" data-text-en="Experience" data-text-ar="الخبرة">Experience</span>
+                        <span class="title-bracket">/&gt;</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2026 - Present</div>
+                                <div class="timeline-badge">Current</div>
+                            </div>
+                            <h3 class="timeline-title" data-text-en="Internship As a Frontend Developer" data-text-ar=""> Frontend Developer</h3>
+                            <div class="Internee.pk Company ">
+                                <i class="fas fa-building"></i>
+                                Internee.pk Company.
+                            </div>
+                            <p class="timeline-description" 
+                            data-text-en="Working as a Frontend Developer Intern at Internee.pk, building responsive and modern web interfaces using HTML, CSS, JavaScript, Bootstrap, and Tailwind CSS. Creating user-friendly designs, improving website responsiveness, and learning modern frontend development practices through real-world projects." 
+                            
+                            data-text-ar="أعمل كمتدربة مطورة واجهات أمامية في Internee.pk، حيث أقوم ببناء واجهات ويب حديثة ومتجاوبة باستخدام HTML و CSS و JavaScript و Bootstrap و Tailwind CSS. أعمل على إنشاء تصاميم سهلة الاستخدام وتحسين توافق المواقع مع مختلف الأجهزة وتعلم ممارسات تطوير الواجهات الأمامية الحديثة من خلال مشاريع حقيقية.">
+                            
+                            Working as a Frontend Developer Intern at Internee.pk, building responsive and modern web interfaces using HTML, CSS, JavaScript, Bootstrap, and Tailwind CSS. Creating user-friendly designs, improving website responsiveness, and learning modern frontend development practices through real-world projects.
+                            </p>
+                           
+                            <div class="timeline-achievements">
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Built responsive UI components using HTML, CSS & JavaScript" 
+                                          data-text-ar="بناء مكونات واجهة مستخدم متجاوبة باستخدام HTML و CSS و JavaScript">
+                                        Built responsive UI components using HTML, CSS & JavaScript
+                                    </span>
+                                </div>
+                            
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Improved frontend design and website responsiveness" 
+                                          data-text-ar="تحسين تصميم الواجهة وتجربة الاستخدام على مختلف الأجهزة">
+                                        Improved frontend design and website responsiveness
+                                    </span>
+                                </div>
+                            
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Worked on real-world projects during internship at Internee.pk" 
+                                          data-text-ar="العمل على مشاريع حقيقية خلال فترة التدريب في Internee.pk">
+                                        Worked on real-world projects during internship at Internee.pk
+                                    </span>
+                                </div>
+                            </div>
+                         
+                            <div class="Internee.pk ">
+                                <span class="tag">Html & CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Bootstrap & Tailwind css</span>
+                                 <span class="tag">ES6+API</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2025  </div>
+                            </div>
+                            <h3 class="timeline-title" data-text-en="Frontend / MERN Stack Intern" data-text-ar="متدرب تطوير الواجهة الأمامية و MERN Stack">
+                                Frontend / MERN Stack Intern
+                            </h3>
+                            
+                            <div class="timeline-company">
+                                <i class="fas fa-building"></i>
+                                UDEV (Internship Program)
+                            </div>
+                            
+                            <p class="timeline-description" 
+                            data-text-en="Completed a 4-month internship in 2025 as a Frontend and MERN Stack Developer. Worked on building responsive user interfaces using HTML, CSS, JavaScript, and React. Gained experience in full-stack development with Node.js and MongoDB." 
+                            data-text-ar="أكملت تدريب لمدة 4 أشهر في عام 2025 كمطورة واجهة أمامية و MERN Stack. عملت على بناء واجهات مستخدم متجاوبة باستخدام HTML و CSS و JavaScript و React، واكتسبت خبرة في تطوير الويب الكامل باستخدام Node.js و MongoDB.">
+                            
+                            Completed a 4-month internship in 2025 as a Frontend and MERN Stack Developer. Worked on building responsive user interfaces using HTML, CSS, JavaScript, and React. Gained experience in full-stack development with Node.js and MongoDB.
+                            </p>
+                            
+                            <div class="timeline-achievements">
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Built responsive frontend components using React" 
+                                          data-text-ar="بناء مكونات واجهة متجاوبة باستخدام React">
+                                        Built responsive frontend components using React
+                                    </span>
+                                </div>
+                            
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Worked on MERN stack projects (Node.js & MongoDB basics)" 
+                                          data-text-ar="العمل على مشاريع MERN Stack (أساسيات Node.js و MongoDB)">
+                                        Worked on MERN stack projects (Node.js & MongoDB basics)
+                                    </span>
+                                </div>
+                            
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Improved UI design and frontend development skills" 
+                                          data-text-ar="تحسين مهارات تصميم الواجهة وتطوير الواجهة الأمامية">
+                                        Improved UI design and frontend development skills
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2025</div>
+                            </div>
+                            <h3 class="timeline-title" data-text-en="Full Stack Developer Trainee" data-text-ar="متدرب تطوير الويب الكامل">
+                                Full Stack Developer Trainee
+                            </h3>
+                            
+                            <div class="timeline-company">
+                                <i class="fas fa-building"></i>
+                                Saylani Mass IT Training Program
+                            </div>
+                            
+                            <p class="timeline-description" 
+                            data-text-en="Currently learning Full Stack Development at Saylani Mass IT Training Program. Started backend development with Node.js and working on improving frontend skills using HTML, CSS, JavaScript, and Bootstrap. Practicing by building projects and strengthening development fundamentals." 
+                            data-text-ar="أتعلم حالياً تطوير الويب الكامل في برنامج Saylani Mass IT. بدأت تطوير الواجهة الخلفية باستخدام Node.js وأعمل على تحسين مهارات الواجهة الأمامية باستخدام HTML و CSS و JavaScript و Bootstrap. أطبق ما أتعلمه من خلال بناء المشاريع وتقوية أساسيات البرمجة.">
+                            
+                            Currently learning Full Stack Development at Saylani Mass IT Training Program. Started backend development with Node.js and working on improving frontend skills using HTML, CSS, JavaScript, and Bootstrap. Practicing by building projects and strengthening development fundamentals.
+                            </p>
+                            
+                            <div class="timeline-achievements">
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Built 50+ practice projects (frontend focus)" 
+                                          data-text-ar="بناء أكثر من 50 مشروع تدريبي (تركيز على الواجهة الأمامية)">
+                                        Built 50+ practice projects (frontend focus)
+                                    </span>
+                                </div>
+                            
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Currently learning backend development (Node.js basics)" 
+                                          data-text-ar="أتعلم حالياً تطوير الخلفية (أساسيات Node.js)">
+                                        Currently learning backend development (Node.js basics)
+                                    </span>
+                                </div>
+                            
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Improving skills in responsive web design and JavaScript" 
+                                          data-text-ar="تحسين مهارات تصميم المواقع المتجاوبة و JavaScript">
+                                        Improving skills in responsive web design and JavaScript
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Tailwind</span>
+                                <span class="tag">Node.js (Learning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">
+                        <span class="title-bracket">&lt;</span>
+                        <span class="title-text" data-text-en="Projects" data-text-ar="المشاريع">Projects</span>
+                        <span class="title-bracket">/&gt;</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="View Project">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-text-en="E-Commerce Platform" data-text-ar="منصة التجارة الإلكترونية">E-Commerce Platform</h3>
+                            <p class="project-description" data-text-en="A complete e-commerce platform with payment integration and advanced inventory management." data-text-ar="منصة تجارة إلكترونية كاملة مع تكامل الدفع وإدارة المخزون المتقدمة.">
+                                A complete e-commerce platform with payment integration and advanced inventory management.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="View Project">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-text-en="Task Management App" data-text-ar="تطبيق إدارة المهام">Task Management App</h3>
+                            <p class="project-description" data-text-en="A web application for task management with real-time synchronization and modern design." data-text-ar="تطبيق ويب لإدارة المهام مع مزامنة فورية وتصميم عصري.">
+                                A web application for task management with real-time synchronization and modern design.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="View Project">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-text-en="Blog Platform" data-text-ar="منصة المدونة">Blog Platform</h3>
+                            <p class="project-description" data-text-en="A modern blog platform with CMS features and beautiful UI design." data-text-ar="منصة مدونة حديثة مع ميزات CMS وتصميم واجهة مستخدم جميل.">
+                                A modern blog platform with CMS features and beautiful UI design.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Prisma</span>
+                                <span class="tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2 class="section-title">
+                        <span class="title-bracket">&lt;</span>
+                        <span class="title-text" data-text-en="Contact" data-text-ar="التواصل">Contact</span>
+                        <span class="title-bracket">/&gt;</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="contact-label" data-text-en="Email" data-text-ar="البريد الإلكتروني">Email</h4>
+                                <a href="mailto:developer@example.com" class="contact-value">developer@example.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="contact-label" data-text-en="Phone" data-text-ar="الهاتف">Phone</h4>
+                                <a href="tel:+966501234567" class="contact-value">+966 50 123 4567</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="contact-label" data-text-en="Location" data-text-ar="الموقع">Location</h4>
+                                <span class="contact-value" data-text-en="Riyadh, Saudi Arabia" data-text-ar="الرياض، المملكة العربية السعودية">Riyadh, Saudi Arabia</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Name" data-placeholder-en="Name" data-placeholder-ar="الاسم" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email" data-placeholder-en="Email" data-placeholder-ar="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Subject" data-placeholder-en="Subject" data-placeholder-ar="الموضوع" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" rows="5" placeholder="Message" data-placeholder-en="Message" data-placeholder-ar="الرسالة" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span data-text-en="Send Message" data-text-ar="إرسال الرسالة">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text-wrapper">
+                    <p class="footer-text">
+                        <span class="footer-copyright">© 2025 Developer Portfolio</span>
+                        <span class="footer-divider">•</span>
+                        <span class="footer-built">Built with passion and code</span>
+                    </p>
+                    <p class="footer-author">
+                        <span class="footer-by-text" data-text-en="by" data-text-ar="بواسطة">by</span>
+                        <a href="https://www.linkedin.com/in/mohammad-abu-sakour-kn" target="_blank" rel="noopener noreferrer" class="footer-author-link">
+                            <i class="fas fa-code"></i>
+                            <span>Kan3an</span>
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/mohammad-abu-sakour-kn" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="footer-social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Motion One loaded dynamically -->
+    <script src="js/animations.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
+
