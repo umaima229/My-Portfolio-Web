@@ -1150,6 +1150,7 @@ img {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 3rem;
+    justify-content: center;
 }
 
 .project-card {
@@ -1160,6 +1161,8 @@ img {
     backdrop-filter: blur(10px);
     transition: all var(--transition-smooth);
     cursor: pointer;
+    max-width: 500px;
+    margin: 0% auto;
 }
 
 .project-card:hover {
